@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android EduCourse: Guía Paso a Paso</title>
+    <!-- Modern Typography: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar glass-panel">
+            <div class="sidebar-header">
+                <h2>📱 Android EduCourse</h2>
+                <p>Guía de Desarrollo Móvil</p>
+            </div>
+            <ul class="nav-links" id="navList">
+                <li class="nav-item active" data-target="intro">Introducción y Estructura</li>
+                <li class="nav-item" data-target="setup">Creación del Proyecto & Gradle</li>
+                <li class="nav-item" data-target="lesson1">L1: Hola Mundo</li>
+                <li class="nav-item" data-target="lesson2">L2: Contador (Estado)</li>
+                <li class="nav-item" data-target="lesson3">L3: Listas Dinámicas</li>
+                <li class="nav-item" data-target="lesson4">L4: App de Tareas Final</li>
+                <li class="nav-item" data-target="run">Lanzar Emulador y APK</li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            
+            <!-- Section: Intro -->
+            <section id="intro" class="lesson-section active-section fade-in">
+                <header class="section-header glass-panel" style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <h1>Estructura del Proyecto Android</h1>
+                    <p>Comprende la anatomía de tu primera aplicación</p>
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px;">
+                        <a href="https://developer.android.com/samples?hl=es-419" target="_blank" class="hero-link" style="margin-top: 0;">
+                            🌐 Ejemplos Oficiales de Android
+                        </a>
+                        <a href="https://developer.android.com/studio/intro?hl=es-419#code_completion" target="_blank" class="hero-link" style="background: linear-gradient(135deg, #059669, #10b981); margin-top: 0;">
+                            💡 Autocompletar y Guía del Entorno
+                        </a>
+                    </div>
+                </header>
+                <div class="card glass-panel">
+                    <h3>¿Cómo se divide este proyecto?</h3>
+                    <p>Tu proyecto Android utiliza Gradle como motor de compilación. Aquí tienes los archivos más importantes que debes conocer:</p>
+                    <ul class="feature-list">
+                        <li><strong>build.gradle.kts / settings.gradle.kts:</strong> Scripts en Kotlin que manejan las dependencias (librerías) de tu app.</li>
+                        <li><strong>AndroidManifest.xml:</strong> El documento principal que declara las pantallas (Activities) de tu sistema y los permisos necesarios (como acceso a Internet).</li>
+                        <li><strong>app/src/main/res/</strong> Tus recursos estáticos:
+                            <ul>
+                                <li><strong>layout/:</strong> Contiene archivos XML tradicionales para diseñar visualmente la interfaz.</li>
+                                <li><strong>values/:</strong> Variables como <code>strings.xml</code> (textos) y <code>colors.xml</code> (colores globales).</li>
+                            </ul>
+                        </li>
+                        <li><strong>app/src/main/java/...</strong> Todo el código lógico en Kotlin. Es aquí donde vinculas interactividad con tu pantalla.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section: Setup & Gradle -->
+            <section id="setup" class="lesson-section hidden">
+                <header class="section-header glass-panel">
+                    <h1>Creación del Proyecto</h1>
+                    <p>Criterios en Android Studio y Solución de problemas de Gradle</p>
+                </header>
+                <div class="card glass-panel" style="margin-bottom: 24px;">
+                    <h3 style="color: #38bdf8;">🛠️ Pasos para crear un Proyecto desde Cero</h3>
+                    <ul class="feature-list">
+                        <li>Abre Android Studio y selecciona <strong>"New Project"</strong>.</li>
+                        <li><strong>Elegir Plantilla:</strong> Para usar Jetpack Compose nativo, elige <em>"Empty Activity"</em>. Para empezar con XML tradicional sin código "molesto" generado de Jetpack, selecciona <em>"Empty Views Activity"</em>.</li>
+                        <li><strong>Nombre y Paquete:</strong> Asigna un título a tu app y un "Package Name" o identificador único reverso (ej: <code>com.tuempresa.miapp</code>). Define su identidad mundial.</li>
+                        <li><strong>Minimum SDK (Nivel de API Mínimo):</strong> Recomendamos escoger "API 24: Android 7.0" para alcanzar el ~95% del mercado de teléfonos actuales gozando de las modernidades de las librerías al mismo tiempo.</li>
+                        <li><strong>Lenguaje:</strong> Siempre selecciona <strong>Kotlin</strong> (Java ya fue desplazado para este tipo de apps modernas) y haz click en "Finish".</li>
+                    </ul>
+                </div>
+                
+                <div class="card glass-panel" style="border-left: 4px solid #ef4444;">
+                    <h3 style="color: #ef4444;">⚠️ Problemas Comunes y Frustrantes con Gradle</h3>
+                    <p style="margin-bottom: 12px; font-size: 0.95rem;">Gradle es la máquina que empaqueta las piezas, descarga el código de terceros y compila tu app. Cuando Gradle da un error "Sync Failed", aplica estos criterios:</p>
+                    <ul class="feature-list">
+                        <li><strong>Conflictos por Falta de Sincronización:</strong> Si acabas de editar los archivos <code>build.gradle.kts</code>, presiona siempre el botón en la barra superior llamado <em>"Sync Project with Gradle Files"</em> (Ícono del elefante) antes de intentar correr la app.</li>
+                        <li><strong>Caché Corrupta de Android Studio (Bug de "Todo en Rojo"):</strong> A veces Android Studio se vuelve loco y marca toda tu sintaxis correcta como errores de "Cannot Resolve Symbol". Arréglalo yendo a la barra de menú superior: <em>File > Invalidate Caches...</em> y seleccionando <strong>"Invalidate and Restart"</strong>. Esto borrará índices corruptos con fuerza bruta y redibujará el entorno con éxito.</li>
+                        <li><strong>JDK Incompatible ("Unsupported class file major version..."):</strong> Asegúrate que los ajustes del entorno coinciden con el JDK esperado. Ve a <em>File > Settings</em> (o Preferences en Mac) <em>> Build, Execution > Build Tools > Gradle</em> y asegúrate que "Gradle JDK" es la Versión 17 o superior.</li>
+                        <li><strong>Paciencia:</strong> La primera vez que Android Studio crea un proyecto puede demorar varios minutos mientras descarga internet completo de repositorios Maven en segundo plano. Nunca modifiques el código si la barra inferior sigue mostrando una barra de carga diciendo "Gradle Syncing...".</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section: Lesson 1 -->
+            <section id="lesson1" class="lesson-section hidden">
+                <header class="section-header glass-panel">
+                    <h1>Lección 1: Hola Mundo</h1>
+                    <p>Muestra tu primer texto en la pantalla, comprendiendo la diferencia de enfoques.</p>
+                </header>
+                
+                <div class="card glass-panel dual-view">
+                    <div class="column">
+                        <h3 class="xml-title">Vista Tradicional (XML)</h3>
+                        <p><strong>Paso 1:</strong> Interfaz Visual en XML.</p>
+                        <div class="file-path">📁 app/src/main/res/layout/activity_lesson1.xml</div>
+                        <div class="code-block" style="border-top-left-radius: 0;">
+&lt;FrameLayout xmlns:android="..."&gt;
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¡Hola Mundo!"
+        android:textSize="32sp" /&gt;
+&lt;/FrameLayout&gt;
+                        </div>
+                        <p style="margin-top: 16px;"><strong>Paso 2:</strong> Código Kotlin.</p>
+                        <div class="file-path">📁 app/src/main/java/com/edu/android/lesson1/XmlHelloWorldActivity.kt</div>
+                        <div class="code-block" style="border-top-left-radius: 0;">
+<span class="comment">// Vinculamos el XML con la Pantalla</span>
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_lesson1)
+}
+                        </div>
+                    </div>
+                    <div class="separator">VS</div>
+                    <div class="column">
+                        <h3 class="compose-title">Jetpack Compose</h3>
+                        <p><strong>Paso único:</strong> Todo sucede en una declaración en el mismo idioma.</p>
+                        <div class="file-path">📁 app/src/main/java/com/edu/android/lesson1/ComposeHelloWorldActivity.kt</div>
+                        <div class="code-block" style="border-top-left-radius: 0;">
+<span class="comment">// ¡No hay XML! Llamamos `setContent`</span>
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContent {
+        Box(
+            modifier = Modifier.fillMaxSize(), 
+            contentAlignment = Alignment.Center
+        ) {
+            Text("¡Hola Mundo!", fontSize = 32.sp)
+        }
+    }
+}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Lesson 2 -->
+            <section id="lesson2" class="lesson-section hidden">
+                <header class="section-header glass-panel">
+                    <h1>Lección 2: Contador Interactivo</h1>
+                    <p>Manejo de estados, clics de botones y actualizaciones de vista.</p>
+                </header>
+
+                <div class="card glass-panel dual-view">
+                    <div class="column">
+                        <h3 class="xml-title">Flujo Imperativo (XML)</h3>
+                        <p><strong>Paso 1:</strong> Define las vistas.</p>
+                        <div class="file-path">📁 app/src/main/res/layout/activity_lesson2.xml</div>
+                        <div class="code-block" style="border-top-left-radius: 0;">
+&lt;LinearLayout
+    android:orientation="vertical" ...&gt;
+    &lt;TextView android:id="@+id/tvCount" android:text="0" /&gt;
+    &lt;Button android:id="@+id/btnClick" android:text="INCREMENTAR" /&gt;
+&lt;/LinearLayout&gt;
+                        </div>
+                        <p style="margin-top: 16px;"><strong>Paso 2:</strong> Programamos el ID.</p>
+                        <div class="file-path">📁 app/src/main/java/com/edu/android/lesson2/XmlCounterActivity.kt</div>
+                        <div class="code-block" style="border-top-left-radius: 0;">
+<span class="comment">// Usar variables mutativas</span>
+private var count = 0
+<br>
+<span class="comment">// Referenciamos</span>
+val tv = findViewById&lt;TextView&gt;(R.id.tvCount)
+val btn = findViewById&lt;Button&gt;(R.id.btnClick)
+<br>
+<span class="comment">// Evento click</span>
+btn.setOnClickListener {
+    count++
+    tv.text = count.toString() <span class="comment">// ACTUALIZACIÓN MANUAL</span>
+}
+                        </div>
+                    </div>
+                    <div class="separator">VS</div>
+                    <div class="column">
+                        <h3 class="compose-title">Flujo Declarativo (Compose)</h3>
+                        <p><strong>Paso Único:</strong> Framework inteligente.</p>
+                        <div class="file-path">📁 app/src/main/java/com/edu/android/lesson2/ComposeCounterActivity.kt</div>
+                        <div class="code-block" style="border-top-left-radius: 0;">
+@Composable
+fun CounterScreen() {
+    <span class="comment">// Estado Observable y Reactivo</span>
+    var count by remember { mutableStateOf(0) }
+<br>
+    Column {
+        Text(text = "$count") <span class="comment">// Se auto-repinta aquí</span>
+<br>
+        Button(onClick = { count++ }) {
+            Text("INCREMENTAR")
+        }
+    }
+}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Lesson 3 -->
+            <section id="lesson3" class="lesson-section hidden">
+                <header class="section-header glass-panel">
+                    <h1>Lección 3: Listas Dinámicas</h1>
+                    <p>El reto del rendimiento: Renderizar listas enormes sin acabar con la memoriaRAM.</p>
+                </header>
+
+                <div class="card glass-panel dual-view">
+                    <div class="column">
+                        <h3 class="xml-title">RecyclerView (XML)</h3>
+                        <p>Su implementación es ardua. Requiere el layout de la Fila Externa y luego asociarlo al Adapter de la lista.</p>
+                        <div class="file-path">📁 app/src/main/res/layout/item_row.xml</div>
+                        <div class="code-block" style="border-top-left-radius: 0; padding-top: 12px; padding-bottom: 12px;">
+&lt;TextView android:id="@+id/tvRowText" /&gt;
+                        </div>
+                        <div class="file-path" style="margin-top: 8px;">📁 app/src/main/java/com/edu/android/lesson3/MyAdapter.kt</div>
+                        <div class="code-block" style="border-top-left-radius: 0;">
+class MyAdapter(val items: List&lt;String&gt;) :
+  RecyclerView.Adapter&lt;ViewHolder&gt;() {
+<br>
+  override fun onCreateViewHolder(...) {
+     <span class="comment">// Inflar "item_row.xml"</span>
+  }
+<br>
+  override fun onBindViewHolder(...) {
+     <span class="comment">// Asignar a la fila el text items[position] </span>
+  }
+}
+                        </div>
+                    </div>
+                    <div class="separator">VS</div>
+                    <div class="column">
+                        <h3 class="compose-title">LazyColumn (Compose)</h3>
+                        <p>No existen Adapters ni ViewHolders.</p>
+                        <div class="file-path">📁 app/src/main/java/com/edu/android/lesson3/ComposeListActivity.kt</div>
+                        <div class="code-block" style="border-top-left-radius: 0;">
+@Composable
+fun MiListaGenial(elementos: List&lt;String&gt;) {
+    
+    <span class="comment">// Equivale a un RecyclerView optimizado</span>
+    LazyColumn {
+        
+        <span class="comment">// Itera mágicamente</span>
+        items(elementos) { nombre ->
+            <span class="comment">// CELDA (Fila) declarativa</span>
+            Text("Elemento: $nombre", modifier = Modifier.padding(16.dp))
+        }
+        
+    }
+}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Lesson 4 -->
+            <section id="lesson4" class="lesson-section hidden">
+                <header class="section-header glass-panel">
+                    <h1>Lección 4: App Funcional (To-Do List)</h1>
+                    <p>Unimos Estado, Entradas de Texto y Listas para crear una aplicación de Notas / Tareas.</p>
+                </header>
+
+                <div class="card glass-panel dual-view">
+                    <div class="column">
+                        <h3 class="xml-title">Construcción Lógica (XML)</h3>
+                        <div class="file-path">📁 app/src/main/java/com/edu/android/lesson4/XmlTodoActivity.kt</div>
+                        <div class="code-block" style="border-top-left-radius: 0;">
+val misDatos = mutableListOf&lt;String&gt;()
+val adapter = MyAdapter(misDatos)
+<br>
+val field = findViewById&lt;EditText&gt;(R.id.etInput)
+val btn = findViewById&lt;Button&gt;(R.id.btnSave)
+val recycler = findViewById&lt;RecyclerView&gt;(R.id.rvTasks)
+<br>
+recycler.adapter = adapter
+<br>
+btn.setOnClickListener {
+    val newT = field.text.toString()
+    misDatos.add(newT)
+    <span class="comment">// FUNDAMENTAL: Informar a Android del cambio:</span>
+    adapter.notifyItemInserted(misDatos.size - 1)
+}
+                        </div>
+                    </div>
+                    <div class="separator">VS</div>
+                    <div class="column">
+                        <h3 class="compose-title">Construcción Reactiva (Compose)</h3>
+                        <div class="file-path">📁 app/src/main/java/com/edu/android/lesson4/ComposeTodoActivity.kt</div>
+                        <div class="code-block" style="border-top-left-radius: 0;">
+@Composable
+fun TodoScreen() {
+    <span class="comment">// Lista Activa observable</span>
+    val tasks = remember { mutableStateListOf&lt;String&gt;() }
+    var input by remember { mutableStateOf("") }
+<br>
+    Column {
+      <span class="comment">// Entrada Texto</span>
+      OutlinedTextField(
+          value = input,
+          onValueChange = { input = it } 
+      )
+      Button(onClick = { tasks.add(input); input = "" }) {
+          Text("Guardar Tarea")
+      }
+<br>
+      <span class="comment">// La magia: Recompone lista sola al mutar `tasks`</span>
+      LazyColumn { items(tasks) { Text(it) } }
+    }
+}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Run & APK -->
+            <section id="run" class="lesson-section hidden">
+                <header class="section-header glass-panel">
+                    <h1>Configuración Final</h1>
+                    <p>Cómo probar tu App y compartirla con el mundo</p>
+                </header>
+
+                <div class="card glass-panel">
+                    <h3>🚀 Pasos para lanzar el Emulador</h3>
+                    <ul class="feature-list" style="margin-bottom: 24px;">
+                        <li><strong>Requisitos:</strong> Asegúrate de instalar "Android Emulator" desde el SDK Manager de Android Studio.</li>
+                        <li>Ve al <strong>Device Manager</strong> (ícono de teléfono en la barra lateral derecha o superior).</li>
+                        <li>Haz clic en <strong>Create Device</strong>, selecciona un modelo de teléfono (por ejemplo, Pixel 8) y descarga una imagen de sistema (recomendado: API 34+).</li>
+                        <li>Una vez creado, selecciona el dispositivo en la barra superior junto al botón verde de "Run/Play".</li>
+                        <li>Haz clic en el <strong>botón verde Play (Run 'app')</strong>. Android Studio compilará el proyecto instalando la aplicación automáticamente en el emulador.</li>
+                    </ul>
+
+                    <h3>📦 Pasos para generar la APK (Instalable física)</h3>
+                    <ul class="feature-list">
+                        <li><strong>Opción Rápida (Debug APK):</strong> Ideal para probar en tu teléfono personal.
+                            <br>➡ Ve al menú superior: <em>Build &gt; Build Bundle(s) / APK(s) &gt; Build APK(s)</em>.
+                            <br>➡ Al finalizar, Android Studio mostrará un mensaje. Haz clic en <em>"locate"</em> para abrir la carpeta donde está el archivo <code>app-debug.apk</code>. Pasa ese archivo a tu teléfono.
+                        </li>
+                        <li><strong>Opción Final (Release Signed APK):</strong> Para publicar en tiendas oficiales.
+                            <br>➡ Ve al menú superior: <em>Build &gt; Generate Signed Bundle / APK</em>.
+                            <br>➡ Elige <em>APK</em>, crea un <strong>Key Store Path</strong> nuevo, establece contraseñas.
+                            <br>➡ Selecciona la variante <code>release</code> y dale a Finish.
+                        </li>
+                    </ul>
+
+                    <h3 style="margin-top: 24px; color: #f59e0b;">📥 Descargar Aplicación Compilada</h3>
+                    <p style="margin-bottom: 12px; font-size: 0.95rem;">Nota: Para que este botón funcione, primero debes utilizar la "Opción Rápida" mencionada arriba en tu Android Studio para compilar. Este botón buscará el APK compilado generado localmente combinando todas las lecciones integradas (XML y Compose) en base al <code>MainActivity</code>.</p>
+                    <a href="../app/build/outputs/apk/debug/app-debug.apk" download class="hero-link" style="background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #111;">
+                        ⬇️ Descargar APK del Proyecto
+                    </a>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

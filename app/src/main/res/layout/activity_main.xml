@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Elige una Lección y Enfoque"
+        android:textSize="24sp"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/btnXmlHola"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Lección 1: Hola Mundo (XML)"/>
+
+    <Button
+        android:id="@+id/btnComposeHola"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Lección 1: Hola Mundo (Compose)"/>
+
+    <Button
+        android:id="@+id/btnXmlCounter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Lección 2: Contador (XML)"/>
+
+    <Button
+        android:id="@+id/btnComposeCounter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lección 2: Contador (Compose)"/>
+</LinearLayout>
