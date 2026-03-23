@@ -6,7 +6,327 @@
     <title>Android EduCourse: Guía Paso a Paso</title>
     <!-- Modern Typography: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+/* Base Reset & Variables */
+:root {
+    --bg-gradient-1: #0f172a;
+    --bg-gradient-2: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-glow: rgba(56, 189, 248, 0.4);
+    --xml-color: #ef4444; /* Rojo para XML tradicional */
+    --compose-color: #10b981; /* Verde para Compose Moderno */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Layout */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    padding: 24px;
+    gap: 24px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 300px;
+    flex-shrink: 0;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.sidebar-header h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    background: linear-gradient(to right, #38bdf8, #818cf8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.sidebar-header p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nav-item {
+    padding: 14px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    transform: translateX(5px);
+}
+
+.nav-item.active {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-left: 4px solid #38bdf8;
+}
+
+/* Main Content Area */
+.content-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    position: relative;
+}
+
+.lesson-section {
+    width: 100%;
+    max-width: none; /* Expandir a todo el espacio disponible */
+}
+
+.lesson-section.hidden {
+    display: none;
+}
+
+.section-header {
+    padding: 32px;
+    margin-bottom: 24px;
+}
+
+.section-header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.section-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Cards & Content */
+.card {
+    padding: 32px;
+    margin-bottom: 24px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    margin-bottom: 16px;
+    font-size: 1.3rem;
+}
+
+.feature-list {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.feature-list li {
+    color: var(--text-secondary);
+}
+
+.feature-list strong {
+    color: var(--text-primary);
+}
+
+/* Dual View Panel (XML vs Compose) */
+.dual-view {
+    display: flex;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.dual-view .column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: var(--text-secondary);
+    padding: 0 16px;
+    position: relative;
+    font-size: 0.9rem;
+}
+
+.separator::before, .separator::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 40%;
+    background: var(--glass-border);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.separator::before { top: 0; }
+.separator::after { bottom: 0; }
+
+.xml-title {
+    color: var(--xml-color);
+    border-bottom: 2px solid rgba(239, 68, 68, 0.3);
+    padding-bottom: 8px;
+}
+
+.compose-title {
+    color: var(--compose-color);
+    border-bottom: 2px solid rgba(16, 185, 129, 0.3);
+    padding-bottom: 8px;
+}
+
+/* Code Blocks */
+.code-block {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 16px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 0.9rem;
+    margin-top: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    flex-grow: 1;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.code-block .comment {
+    color: #6b7280;
+    font-style: italic;
+}
+
+.code-block code {
+    color: #e2e8f0;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* File Paths and Links */
+.file-path {
+    font-size: 0.8rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    padding: 6px 12px;
+    border-radius: 6px 6px 0 0;
+    margin-top: 16px;
+    margin-bottom: -16px; /* Para empalmar con la code-block */
+    display: inline-block;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-bottom: none;
+    font-family: monospace;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 0.95rem;
+}
+
+.hero-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    color: white;
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+    .app-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        padding: 20px;
+    }
+    .dual-view {
+        flex-direction: column;
+    }
+    .separator {
+        padding: 24px 0;
+    }
+    .separator::before, .separator::after {
+        width: 40%;
+        height: 2px;
+        top: 50%;
+        left: unset;
+        transform: translateY(-50%);
+    }
+    .separator::before { left: 0; }
+    .separator::after { right: 0; }
+}
+    </style>
 </head>
 <body>
     <div class="app-container">
@@ -380,6 +700,42 @@ fun TodoScreen() {
         </main>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const navItems = document.querySelectorAll('.nav-item');
+    const sections = document.querySelectorAll('.lesson-section');
+
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // 1. Quitar selección activa de todos los links
+            navItems.forEach(nav => nav.classList.remove('active'));
+            
+            // 2. Activar el link presionado
+            item.classList.add('active');
+
+            // 3. Obtener el ID de la pletina objetivo ("target")
+            const targetId = item.getAttribute('data-target');
+
+            // 4. Ocultar todas las secciones simulando un SPA modernito
+            sections.forEach(section => {
+                section.classList.add('hidden');
+                section.classList.remove('fade-in');
+            });
+
+            // 5. Mostrar la pletina correspondiente e inyectar animación
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+                
+                // Forzar repintado para reiniciar animación (Truco de CSS)
+                void targetSection.offsetWidth;
+                
+                targetSection.classList.add('fade-in');
+            }
+        });
+    });
+});
+    </script>
 </body>
 </html>
