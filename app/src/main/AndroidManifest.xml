@@ -21,5 +21,10 @@
         <activity android:name=".lesson2.XmlCounterActivity" />
         <activity android:name=".lesson1.ComposeHelloWorldActivity" />
         <activity android:name=".lesson2.ComposeCounterActivity" />
+        
+        <activity android:name=".lesson3.XmlListActivity" />
+        <activity android:name=".lesson3.ComposeListActivity" />
+        <activity android:name=".lesson4.XmlTodoActivity" />
+        <activity android:name=".lesson4.ComposeTodoActivity" />
     </application>
 </manifest>

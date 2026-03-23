@@ -38,5 +38,33 @@
         android:id="@+id/btnComposeCounter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="Lección 2: Contador (Compose)"/>
+
+    <Button
+        android:id="@+id/btnXmlList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Lección 3: Listas (XML)"/>
+
+    <Button
+        android:id="@+id/btnComposeList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Lección 3: Listas (Compose)"/>
+
+    <Button
+        android:id="@+id/btnXmlTodo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Lección 4: Tareas (XML)"/>
+
+    <Button
+        android:id="@+id/btnComposeTodo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lección 4: Tareas (Compose)"/>
 </LinearLayout>
