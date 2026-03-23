@@ -46,7 +46,7 @@
                 </header>
                 <div class="card glass-panel">
                     <h3>¿Cómo se divide este proyecto?</h3>
-                    <p>Tu proyecto Android utiliza Gradle como motor de compilación. Aquí tienes los archivos más importantes que debes conocer:</p>
+                    <p>Cada lección de este curso está pensada para ser trabajada como un <strong>proyecto independiente</strong> en Android Studio. Eso significa que por cada lección crearás un proyecto nuevo y compilarás su propia APK exclusiva. Aquí tienes los archivos clave generados en todo nuevo proyecto:</p>
                     <ul class="feature-list">
                         <li><strong>build.gradle.kts / settings.gradle.kts:</strong> Scripts en Kotlin que manejan las dependencias (librerías) de tu app.</li>
                         <li><strong>AndroidManifest.xml:</strong> El documento principal que declara las pantallas (Activities) de tu sistema y los permisos necesarios (como acceso a Internet).</li>
@@ -109,7 +109,9 @@
                     <h1>Lección 1: Hola Mundo</h1>
                     <p>Muestra tu primer texto en la pantalla, comprendiendo la diferencia de enfoques.</p>
                 </header>
-                
+                <div style="background: rgba(0,0,0,0.2); border-left: 4px solid #38bdf8; padding: 16px; margin-bottom: 24px; border-radius: 8px;">
+                    <strong>🎯 Paso 0: Crea el Proyecto.</strong> Abre Android Studio, da clic en <em>"New Project"</em>. Ponle de nombre "Leccion1_HolaMundo". Si generarás la vista tradicional elige <em>"Empty Views Activity"</em>, o elige <em>"Empty Activity"</em> para Jetpack Compose. Al ejecutarlo en el emulador, tendrás tu primera APK instalada de forma independiente.
+                </div>
                 <div class="card glass-panel dual-view">
                     <div class="column">
                         <h3 class="xml-title">Vista Tradicional (XML)</h3>
@@ -163,7 +165,9 @@ override fun onCreate(savedInstanceState: Bundle?) {
                     <h1>Lección 2: Contador Interactivo</h1>
                     <p>Manejo de estados, clics de botones y actualizaciones de vista.</p>
                 </header>
-
+                <div style="background: rgba(0,0,0,0.2); border-left: 4px solid #38bdf8; padding: 16px; margin-bottom: 24px; border-radius: 8px;">
+                    <strong>🎯 Paso 0: Nuevo Proyecto.</strong> Para esta lección, debes ir a <em>File > New Project</em> y nombrarlo "Leccion2_Contador". Sigue la misma dinámica y genera tu segunda y nueva APK independiente al compilar tu código.
+                </div>
                 <div class="card glass-panel dual-view">
                     <div class="column">
                         <h3 class="xml-title">Flujo Imperativo (XML)</h3>
@@ -223,7 +227,9 @@ fun CounterScreen() {
                     <h1>Lección 3: Listas Dinámicas</h1>
                     <p>El reto del rendimiento: Renderizar listas enormes sin acabar con la memoriaRAM.</p>
                 </header>
-
+                <div style="background: rgba(0,0,0,0.2); border-left: 4px solid #38bdf8; padding: 16px; margin-bottom: 24px; border-radius: 8px;">
+                    <strong>🎯 Paso 0: Nuevo Proyecto.</strong> Nuevamente crea un proyecto desde cero ("Leccion3_Listas"). Practicarás la estructura base y generarás una APK limpia con este ejemplo particular de listas para aislar las funcionalidades.
+                </div>
                 <div class="card glass-panel dual-view">
                     <div class="column">
                         <h3 class="xml-title">RecyclerView (XML)</h3>
@@ -278,7 +284,9 @@ fun MiListaGenial(elementos: List&lt;String&gt;) {
                     <h1>Lección 4: App Funcional (To-Do List)</h1>
                     <p>Unimos Estado, Entradas de Texto y Listas para crear una aplicación de Notas / Tareas.</p>
                 </header>
-
+                <div style="background: rgba(0,0,0,0.2); border-left: 4px solid #38bdf8; padding: 16px; margin-bottom: 24px; border-radius: 8px;">
+                    <strong>🎯 Paso 0: Proyecto Final.</strong> Inicia tu cuarto y último proyecto independiente ("Leccion4_Tareas"). Compila y genera el APK final de esta lección para tener una App de Tareas real independiente instalada en tu equipo físico.
+                </div>
                 <div class="card glass-panel dual-view">
                     <div class="column">
                         <h3 class="xml-title">Construcción Lógica (XML)</h3>
