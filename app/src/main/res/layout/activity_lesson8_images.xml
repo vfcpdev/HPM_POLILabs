@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lección 8: Carga de Imágenes (XML)"
+        android:textSize="22sp"
+        android:textColor="@color/primary_dark_navy"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. Imagen desde URL (Usando Glide)"
+        android:textStyle="bold"
+        android:textColor="@color/primary_light_blue"/>
+    
+    <ImageView
+        android:id="@+id/ivGlide"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="8dp"
+        android:background="#DDDDDD"/>
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#BBBBBB" android:layout_marginVertical="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2. Aplicando Paleta del Proyecto"
+        android:textStyle="bold"
+        android:textColor="@color/sec_magenta"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+        <View android:layout_width="40dp" android:layout_height="40dp" android:background="@color/sec_orange" android:layout_margin="4dp"/>
+        <View android:layout_width="40dp" android:layout_height="40dp" android:background="@color/sec_green" android:layout_margin="4dp"/>
+        <View android:layout_width="40dp" android:layout_height="40dp" android:background="@color/sec_magenta" android:layout_margin="4dp"/>
+        <View android:layout_width="40dp" android:layout_height="40dp" android:background="@color/sec_cyan" android:layout_margin="4dp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Volver al Menú"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/primary_dark_navy"/>
+</LinearLayout>

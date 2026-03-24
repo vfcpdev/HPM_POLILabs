@@ -37,5 +37,14 @@
         <activity android:name=".lesson7.XmlFragmentsActivity" />
         <activity android:name=".lesson7.SecondActivity" />
         <activity android:name=".lesson7.ComposeNavigationActivity" />
+        
+        <activity android:name=".lesson8.XmlImageActivity" />
+        <activity android:name=".lesson8.ComposeImageActivity" />
+        
+        <activity android:name=".lesson9.XmlPersistActivity" />
+        <activity android:name=".lesson9.ComposePersistActivity" />
+        
+        <activity android:name=".CodeExplanationActivity" />
+        <activity android:name=".AboutActivity" />
     </application>
 </manifest>

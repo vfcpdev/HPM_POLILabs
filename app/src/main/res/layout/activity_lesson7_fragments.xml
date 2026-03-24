@@ -1,61 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lección 7: Actividades y Fragmentos (XML)"
-        android:textSize="20sp"
-        android:layout_marginBottom="16dp"/>
-
-    <!-- Activity Data Passing -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1. Pasar Datos entre Actividades"
-        android:textStyle="bold"
-        android:layout_marginTop="8dp"/>
-    <EditText
-        android:id="@+id/etName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Escribe algo aquí"/>
-    <Button
-        android:id="@+id/btnNextActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ir a Segunda Actividad"/>
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#BBBBBB" android:layout_marginVertical="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lección 7: Actividades y Fragmentos (XML)"
+            android:textSize="20sp"
+            android:layout_marginBottom="16dp"/>
 
-    <!-- Fragments -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2. Fragmentos (FragmentContainerView)"
-        android:textStyle="bold"
-        android:layout_marginTop="8dp"/>
-    <Button
-        android:id="@+id/btnToggleFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cargar Fragmento Dinámicamente"/>
+        <!-- Activity Data Passing -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1. Pasar Datos entre Actividades"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Escribe algo aquí"/>
+        <Button
+            android:id="@+id/btnNextActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ir a Segunda Actividad"/>
 
-    <FrameLayout
-        android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="8dp"
-        android:background="#FAFAFA"/>
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#BBBBBB" android:layout_marginVertical="16dp"/>
 
-    <Button
-        android:id="@+id/btnBack"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Volver al Menú"
-        android:layout_marginTop="32dp"/>
-</LinearLayout>
+        <!-- Fragments -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2. Fragmentos (FragmentContainerView)"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+        <Button
+            android:id="@+id/btnToggleFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cargar Fragmento Dinámicamente"/>
+
+        <FrameLayout
+            android:id="@+id/fragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:background="#FAFAFA"/>
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver al Menú"
+            android:layout_marginTop="32dp"/>
+    </LinearLayout>
+</ScrollView>

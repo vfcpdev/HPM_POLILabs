@@ -1,8 +1,19 @@
 <resources>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <!-- Primaria -->
+    <color name="primary_light_blue">#1FB2DE</color>
+    <color name="primary_dark_navy">#0F385A</color>
+    
+    <!-- Secundaria -->
+    <color name="sec_orange">#FBAF17</color>
+    <color name="sec_green">#A6CE38</color>
+    <color name="sec_magenta">#EC0677</color>
+    <color name="sec_cyan">#15BECE</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <!-- Mapeo para el tema -->
+    <color name="colorPrimary">#1FB2DE</color>
+    <color name="colorPrimaryDark">#0F385A</color>
+    <color name="colorAccent">#FBAF17</color>
 </resources>
