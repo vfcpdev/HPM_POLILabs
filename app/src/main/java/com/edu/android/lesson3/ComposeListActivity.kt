@@ -12,8 +12,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.dp 
+import androidx.compose.ui.unit.sp 
+import androidx.compose.material3.Button
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.ui.platform.LocalContext
+import android.app.Activity
 
 /**
  * Lección 3 (Compose): Listas Dinámicas con LazyColumn.
@@ -44,17 +50,28 @@ class ComposeListActivity : ComponentActivity() {
  */
 @Composable
 fun MiListaGenial(elementos: List<String>) {
-    // 1. LazyColumn: Es el equivalente moderno para listas grandes (Renderizado flojo)
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
-        
-        // 2. Definimos las filas dinámicamente
-        items(elementos) { nombre ->
-            // Definimos visualmente la celda de cada fila
-            Text(
-                text = nombre,
-                fontSize = 18.sp,
-                modifier = Modifier.padding(16.dp)
-            )
+    val context = LocalContext.current
+    
+    Column(modifier = Modifier.fillMaxSize()) {
+        // Botón de regreso al tope de la lista
+        Button(
+            onClick = { (context as? Activity)?.finish() },
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        ) {
+            Text("Volver al Menú Principal")
+        }
+
+        // 1. LazyColumn: Es el equivalente moderno para listas grandes (Renderizado flojo)
+        LazyColumn(modifier = Modifier.weight(1f)) {
+            // 2. Definimos las filas dinámicamente
+            items(elementos) { nombre ->
+                // Definimos visualmente la celda de cada fila
+                Text(
+                    text = nombre,
+                    fontSize = 18.sp,
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
         }
     }
 }

@@ -48,5 +48,10 @@ class XmlTodoActivity : AppCompatActivity() {
                 field.text.clear()
             }
         }
+
+        // Botón para regresar al MainActivity
+        findViewById<Button>(R.id.btnBack).setOnClickListener {
+            finish()
+        }
     }
 }

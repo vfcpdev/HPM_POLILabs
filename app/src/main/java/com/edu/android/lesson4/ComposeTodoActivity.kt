@@ -21,7 +21,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.dp 
+import androidx.compose.ui.platform.LocalContext
+import android.app.Activity
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.ui.unit.sp
 
 /**
  * Lección 4 (Compose): Aplicación Completa (To-Do List).
@@ -49,8 +55,17 @@ fun TodoScreen() {
     // 1. Estados reactivos: Mutan la UI directamente
     val tasks = remember { mutableStateListOf<String>() } // Lista Observable
     var input by remember { mutableStateOf("") }         // Texto de entrada reactivo
+    val context = LocalContext.current
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+        // Botón de regreso al tope de la lista
+        Button(
+            onClick = { (context as? Activity)?.finish() },
+            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+        ) {
+            Text("Volver al Menú Principal")
+        }
+
         Row {
             // 2. Campo de Texto Outlined
             OutlinedTextField(

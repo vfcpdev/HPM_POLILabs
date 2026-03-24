@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.edu.android">
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
@@ -24,5 +26,16 @@
         <activity android:name=".lesson3.ComposeListActivity" />
         <activity android:name=".lesson4.XmlTodoActivity" />
         <activity android:name=".lesson4.ComposeTodoActivity" />
+        
+        <activity android:name=".lesson5.XmlFormActivity" />
+        <activity android:name=".lesson5.ComposeFormActivity" />
+        <activity android:name=".InteractiveTutorialActivity" />
+        
+        <activity android:name=".lesson6.XmlLayoutsActivity" />
+        <activity android:name=".lesson6.ComposeLayoutsActivity" />
+        
+        <activity android:name=".lesson7.XmlFragmentsActivity" />
+        <activity android:name=".lesson7.SecondActivity" />
+        <activity android:name=".lesson7.ComposeNavigationActivity" />
     </application>
 </manifest>
