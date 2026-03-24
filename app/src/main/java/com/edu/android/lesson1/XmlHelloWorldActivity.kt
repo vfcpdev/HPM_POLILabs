@@ -14,5 +14,10 @@ class XmlHelloWorldActivity : AppCompatActivity() {
         // Asigna la interfaz de usuario guardada en 'res/layout/activity_lesson1_xml.xml' a esta ventana.
         // Android "infla" (construye en memoria) estos componentes XML.
         setContentView(R.layout.activity_lesson1_xml)
+        
+        // Botón para regresar al MainActivity
+        findViewById<android.widget.Button>(R.id.btnBack).setOnClickListener {
+            finish() // Finaliza esta actividad y regresa a la anterior (MainActivity)
+        }
     }
 }

@@ -27,5 +27,10 @@ class XmlListActivity : AppCompatActivity() {
         
         // 4. Asignar el adaptador personalizado
         recyclerView.adapter = MyAdapter(items)
+
+        // 5. Botón para regresar al MainActivity
+        findViewById<android.widget.Button>(R.id.btnBack).setOnClickListener {
+            finish()
+        }
     }
 }

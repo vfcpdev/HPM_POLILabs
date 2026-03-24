@@ -32,5 +32,10 @@ class XmlCounterActivity : AppCompatActivity() {
             // ACTUALIZACIÓN IMPERATIVA: Forzamos explícitamente a la Vista de texto a reemplazar un viejo texto por el nuevo.
             tvCounter.text = count.toString()
         }
+
+        // Botón para regresar al MainActivity
+        findViewById<Button>(R.id.btnBack).setOnClickListener {
+            finish()
+        }
     }
 }

@@ -1,14 +1,19 @@
 package com.edu.android.lesson1 // Parte de la lección 1
 
-import android.os.Bundle // Para manejar el estado guardado
-import androidx.activity.ComponentActivity // Clase base ligera (usada generalmente para Compose)
-import androidx.activity.compose.setContent // Función de extensión pilar para inyectar un nodo raíz de Compose
-import androidx.compose.foundation.layout.Box // Equivalente moderno a FrameLayout, pinta encima
-import androidx.compose.foundation.layout.fillMaxSize // Modificador para ocupar toda la pantalla
-import androidx.compose.material3.Text // Componente Text de la librería de diseño Material 3
-import androidx.compose.ui.Alignment // Enum para declarar alineaciones en un Box o layout
-import androidx.compose.ui.Modifier // Interfaz Modifier fundamental en Compose para alterar aspecto/tamaño
-import androidx.compose.ui.unit.sp // Pixeles escalables referenciados para fuentes tipográficas
+import android.os.Bundle 
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier 
+import androidx.compose.ui.unit.dp 
+import androidx.compose.ui.unit.sp 
 
 // Pantalla para Hola Mundo con Compose moderno
 class ComposeHelloWorldActivity : ComponentActivity() {
@@ -19,15 +24,24 @@ class ComposeHelloWorldActivity : ComponentActivity() {
         
         // Sustituye el uso de 'setContentView' (XML). Inicia el marco visual de Compose.
         setContent {
-            // Contenedor principal para organizar la vista en capas
-            Box(
-                // Ocupamos todo el tamaño físico de la pantalla de fondo
-                modifier = Modifier.fillMaxSize(), 
-                // Colocamos por defecto cualquier "hijo" visual totalmente centrado
-                contentAlignment = Alignment.Center
+            // Un componente Column organiza a sus hijos verticalmente
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             ) {
-                // UI declarativa que escupe un texto.
-                Text("¡Hola Mundo desde Compose!", fontSize = 32.sp)
+                // UI declarativa que muestra un texto.
+                Text("¡Hola Mundo desde Compose!", fontSize = 24.sp)
+                
+                // Espacio entre componentes
+                Spacer(modifier = Modifier.height(32.dp))
+                
+                // Botón moderno de Compose
+                Button(onClick = { 
+                    finish() // Finalizar la actividad (Regresar al menú)
+                }) {
+                    Text("Volver al Menú Principal")
+                }
             }
         }
     }

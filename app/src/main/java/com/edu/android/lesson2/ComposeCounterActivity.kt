@@ -15,10 +15,12 @@ import androidx.compose.runtime.getValue // Para desestructurar getters de Mutab
 import androidx.compose.runtime.mutableStateOf // Wrapper base que Android Compose usa para Vigilar el Estado (Detecta si una variable muta)
 import androidx.compose.runtime.remember // Garantiza que una variable no sufra pérdida cuando una pantalla gira, o se redibuja debido a cambios
 import androidx.compose.runtime.setValue // Setter delegado (opcional pero usual si queremos editar sin llamar el getter)
-import androidx.compose.ui.Alignment // Centrado y alineamiento Horizontal interno de una "Columna"
-import androidx.compose.ui.Modifier // Encapsula transformaciones geométricas, margenes
-import androidx.compose.ui.unit.dp // Density Independent Pixels (Pixeles Lógicos equivalentes)
-import androidx.compose.ui.unit.sp // Scaled Pixels para tipografia moderna
+import androidx.compose.ui.Alignment 
+import androidx.compose.ui.Modifier 
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp 
+import androidx.compose.ui.unit.sp 
+import android.app.Activity
 
 // Ventana o Actividad dedicada enteramente a Reactividad vía Jetpack Compose
 class ComposeCounterActivity : ComponentActivity() {
@@ -54,12 +56,20 @@ fun CounterScreen() {
         // Elemento invisible que separa el texto del botón unos 24dp lógicos
         Spacer(modifier = Modifier.height(24.dp))
         
-        // Componente Botón de Compose. Su Lambda 'onClick' interceptará los clics nativos
         Button(onClick = { 
             count++ // Al alterar esta variable de MutableStateOf, Compose redibuja mágicamente toda la parte UI que esté atada a el. ¡No asignamos la view nunca manual!
         }) {
             // Textura visual e interna del botón
             Text("INCREMENTAR (COMPOSE)")
+        }
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        val context = LocalContext.current
+        Button(onClick = { 
+            (context as? Activity)?.finish()
+        }) {
+            Text("Volver al Menú Principal")
         }
     }
 }

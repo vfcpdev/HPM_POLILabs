@@ -15,5 +15,12 @@
         android:id="@+id/btnIncrement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="INCREMENTAR (XML)"/>
+        android:text="INCREMENTAR (XML)"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver al Menú Principal"/>
 </LinearLayout>
